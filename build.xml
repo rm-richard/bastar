@@ -1,0 +1,26 @@
+<project name="BidirectionalAstar" default="dist" basedir=".">
+
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+
+	<target name="init">
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}"
+		       encoding="iso-8859-2" />
+	</target>
+
+	<target name="dist" depends="compile">
+		<manifest file="MANIFEST.MF">
+			<attribute name="Main-Class" value="bastar.Framework" />
+		</manifest>
+		<jar jarfile="bastar.jar" basedir="${build}"
+		     manifest="MANIFEST.MF" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+	</target>
+</project>
